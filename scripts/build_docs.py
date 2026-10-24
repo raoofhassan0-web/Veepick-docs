@@ -1,12 +1,15 @@
 """Generate the public Veepick documentation website and Markdown guides."""
 from pathlib import Path
 from html import escape
+import hashlib
 
 ROOT = Path(__file__).resolve().parent
 if ROOT.name == 'scripts':
     ROOT = ROOT.parent
 BASE = 'https://raoofhassan0-web.github.io/Veepick-docs/'
 ICON = 'https://veepick.com/download/assets/veepick-icon.png'
+CSS_SOURCE = (ROOT / 'styles.css').read_text()
+CSS_ASSET = 'assets/docs-' + hashlib.sha256(CSS_SOURCE.encode()).hexdigest()[:12] + '.css'
 GUIDES = [
     ('getting-started', '01', 'Getting started', 'Your first steps with Veepick, from installing the app to finding your way around.', [
         ('Install Veepick', 'Visit the official Android download page and follow the instructions for your device. If Android asks you to allow an installation, review the source and the system prompt before continuing. Download Veepick only from an official destination linked by Veepick.'),
@@ -46,7 +49,7 @@ def icon(name):
 def brand(prefix):
     return '<a class="brand" href="'+prefix+'index.html"><img src="'+ICON+'" alt="" width="34" height="34"><span>Veepick<span class="brand-note"> / Docs</span></span></a>'
 def head(title,desc,path,prefix):
-    return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#ffffff"><title>'+escape(title)+' | Veepick</title><meta name="description" content="'+escape(desc,quote=True)+'"><meta property="og:title" content="'+escape(title,quote=True)+' | Veepick"><meta property="og:description" content="'+escape(desc,quote=True)+'"><meta property="og:type" content="website"><meta property="og:url" content="'+BASE+path+'"><meta property="og:image" content="'+ICON+'"><link rel="canonical" href="'+BASE+path+'"><link rel="icon" href="'+ICON+'"><link rel="stylesheet" href="'+prefix+'styles.css"></head><body id="top"><a class="skip" href="#main">Skip to content</a>'
+    return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#ffffff"><title>'+escape(title)+' | Veepick</title><meta name="description" content="'+escape(desc,quote=True)+'"><meta property="og:title" content="'+escape(title,quote=True)+' | Veepick"><meta property="og:description" content="'+escape(desc,quote=True)+'"><meta property="og:type" content="website"><meta property="og:url" content="'+BASE+path+'"><meta property="og:image" content="'+ICON+'"><link rel="canonical" href="'+BASE+path+'"><link rel="icon" href="'+ICON+'"><link rel="stylesheet" href="'+prefix+CSS_ASSET+'"></head><body id="top"><a class="skip" href="#main">Skip to content</a>'
 def header(prefix,active=''):
     return '<header class="site-header"><div class="container header-inner">'+brand(prefix)+'<nav aria-label="Main navigation"><a href="'+prefix+'index.html"'+(' aria-current="page"' if active=='home' else '')+'>Overview</a><a href="'+prefix+'index.html#guides"'+(' aria-current="page"' if active=='guide' else '')+'>Guides</a><a href="'+prefix+'index.html#help">Help</a></nav><a class="header-download" href="https://veepick.com/download/">Get Veepick '+icon('arrow')+'</a></div></header>'
 def footer(prefix):
@@ -190,7 +193,7 @@ Edit guide content in the generator, regenerate the pages, and include the corre
 '''
 
 def build():
-    files={'index.html':home(),'README.md':README+md_footer(),'SUPPORT.md':SUPPORT+md_footer(),'CONTRIBUTING.md':CONTRIBUTING+md_footer()}
+    files={CSS_ASSET:CSS_SOURCE,'index.html':home(),'README.md':README+md_footer(),'SUPPORT.md':SUPPORT+md_footer(),'CONTRIBUTING.md':CONTRIBUTING+md_footer()}
     for g in GUIDES:
         files['guides/'+g[0]+'.html']=guide_html(g)
         files['guides/'+g[0]+'.md']=guide_md(g)

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="290" viewBox="0 0 1200 290" role="img" aria-labelledby="title desc">
+  <title id="title">Veepick documentation</title>
+  <desc id="desc">Conversations, creativity and community. The official Veepick guide.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#231833"/><stop offset="1" stop-color="#3b265b"/></linearGradient></defs>
+  <rect width="1200" height="290" rx="18" fill="url(#bg)"/>
+  <g fill="none" stroke="#a18ac7" stroke-opacity=".14"><circle cx="1030" cy="140" r="115"/><circle cx="1030" cy="140" r="174"/><circle cx="1030" cy="140" r="230"/></g>
+  <text x="64" y="62" font-family="system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing="3" fill="#bda9d7">THE OFFICIAL VEEPICK GUIDE</text>
+  <text x="64" y="126" font-family="system-ui,sans-serif" font-size="43" font-weight="650" letter-spacing="-1.4" fill="#fff">Conversations. Creativity. Community.</text>
+  <text x="66" y="168" font-family="system-ui,sans-serif" font-size="17" fill="#c7b9d6">Find your way around Veepick. Make it yours.</text>
+  <g font-family="system-ui,sans-serif" font-size="11" fill="#d6c9e3"><text x="66" y="235">GETTING STARTED</text><circle cx="221" cy="231" r="2" fill="#987abd"/><text x="244" y="235">SHARING &amp; MESSAGING</text><circle cx="433" cy="231" r="2" fill="#987abd"/><text x="456" y="235">GROUPS &amp; CHANNELS</text></g>
+  <g stroke="#d5c5ec" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="963" y="83" width="92" height="67" rx="15"/><path d="m984 150-14 17 1-22M984 108h49M984 124h33"/><rect x="1032" y="163" width="60" height="49" rx="10" fill="#38234f"/><path d="m1056 177 17 10-17 10Z"/></g>
+</svg>

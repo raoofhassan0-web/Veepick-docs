@@ -8,7 +8,7 @@
 <p align="center">The official home of Veepick’s public guides and documentation.</p>
 
 <p align="center">
-  <a href="https://raoofhassan0-web.github.io/Veepick-docs/"><strong>Explore the documentation</strong></a>
+  <a href="#start-exploring"><strong>Read the guides on GitHub</strong></a>
   &nbsp; · &nbsp;
   <a href="https://veepick.com/download/">Get Veepick for Android</a>
   &nbsp; · &nbsp;
